@@ -11,11 +11,9 @@ const App = () => {
         setCatsData(res.data);
       });
   }, []);
-
   const handleRemoveData = (id) => {
     setCatsData((prev) => prev?.filter((x) => x.id !== id));
   };
-
   const handleLikeData = (id) => {
     setCatsData((prevState) =>
       prevState.map((catDataItem) =>
@@ -25,7 +23,6 @@ const App = () => {
       )
     );
   };
-
   const handleSortByLiked = (event) => {
     setCatsData(prev => {
       const arr = [...prev]
@@ -33,7 +30,6 @@ const App = () => {
         arr.sort((a, b) => b.liked - a.liked)
       else
         arr.sort((a, b) => a.liked - b.liked)
-
       return arr;
     });
   }

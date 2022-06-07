@@ -8,11 +8,16 @@ const App = () => {
     axios
       .get("https://api.thecatapi.com/v1/images/search?page=1&limit=48")
       .then((res) => {
-        setCatsData(res.data);
+          const addLiked = res.data.map((item) => {
+          const newItem = {...item}
+          newItem.liked = false
+          return newItem
+        })
+        setCatsData(addLiked);
       });
   }, []);
   const handleRemoveData = (id) => {
-    setCatsData((prev) => prev?.filter((x) => x.id !== id));
+    setCatsData((prevState) => prevState?.filter((x) => x.id !== id));
   };
   const handleLikeData = (id) => {
     setCatsData((prevState) =>
@@ -24,13 +29,21 @@ const App = () => {
     );
   };
   const handleSortByLiked = (event) => {
-    setCatsData(prev => {
-      const arr = [...prev]
-      if (event.target.checked)
-        arr.sort((a, b) => b.liked - a.liked)
-      else
-        arr.sort((a, b) => a.liked - b.liked)
-      return arr;
+   
+    setCatsData((prevState) => {
+      const newCats = [...prevState]
+      if (event.target.checked) {
+        newCats.filter((item) => {
+          const { liked } = item
+          return liked === true
+        })
+      } else {
+        newCats.filter((item) => {
+          const { liked } = item
+          return liked === false
+        })
+      }
+      return newCats;
     });
   }
   return (
@@ -42,9 +55,9 @@ const App = () => {
       </label>
       <div className="img-container">
         {catsData.map((catData) => {
-          console.log(catData.liked);
+          const key = catData.id + '-' + catData.liked
           return (
-            <div className="cards" key={catData.id}>
+            <div className="cards" key={key}>
               <img src={catData.url} alt={catData.id} className="cards-img" />
               <AiFillHeart
                 className="img-icon_like"

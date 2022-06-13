@@ -28,8 +28,8 @@ body {
 }
 .cards {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   flex: 2;
   margin-bottom: 10px;
   box-shadow: -4px 4px 50px 0px rgba(34, 60, 80, 0.2);
@@ -38,7 +38,7 @@ body {
     width: inherit;
     height: inherit;
   }
-  .img-icon_like{
+  .img-icon_like {
     position: absolute;
     top: 10px;
     right: 20px;
@@ -57,6 +57,6 @@ body {
     stroke-width: 100px;
   }
 }
- #liked {
+#liked {
   fill: #ec0d27;
 }

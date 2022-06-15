@@ -50,23 +50,23 @@ const App = () => {
     });
   };
 
-  const lengthCatsDataAll = catsDataAll.length;
-  const lengthCatsDataLiked = catsDataLiked.length;
-  const lengthCatsDataDisliked = catsDataDisliked.length;
+  // const lengthCatsDataAll = catsDataAll.length;
+  // const lengthCatsDataLiked = catsDataLiked.length;
+  // const lengthCatsDataDisliked = catsDataDisliked.length;
 
-  let resultCatsDataLiked = [];
+  // let resultCatsDataLiked = [];
 
-  if (isChecked && lengthCatsDataLiked === lengthCatsDataAll) {
-    resultCatsDataLiked = lengthCatsDataAll;
-  }
+  // if (isChecked && lengthCatsDataLiked === lengthCatsDataAll) {
+  //   resultCatsDataLiked = lengthCatsDataAll;
+  // }
 
-  if (isChecked && lengthCatsDataLiked < lengthCatsDataAll) {
-    resultCatsDataLiked = lengthCatsDataDisliked;
-  }
+  // if (isChecked && lengthCatsDataLiked < lengthCatsDataAll) {
+  //   resultCatsDataLiked = lengthCatsDataDisliked;
+  // }
 
-  if (!isChecked && lengthCatsDataDisliked < lengthCatsDataAll) {
-    resultCatsDataLiked = lengthCatsDataDisliked;
-  }
+  // if (!isChecked && lengthCatsDataDisliked < lengthCatsDataAll) {
+  //   resultCatsDataLiked = lengthCatsDataDisliked;
+  // }
 
   return (
     <div className="wrapper">
@@ -76,7 +76,7 @@ const App = () => {
         <span>Выбрать только ♥ </span>
       </label>
       <div className="img-container">
-        {resultCatsDataLiked.map((catData) => {
+        {catsDataAll.map((catData) => {
           const key = catData.id + "-" + catData.liked;
           return (
             <div className="cards" key={key}>
